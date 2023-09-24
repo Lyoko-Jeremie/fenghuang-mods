@@ -1,0 +1,16 @@
+			title: "General Traits",
+			traits: [
+				{
+					name: "凤眸",
+					colour: "",
+					style: `background: linear-gradient(to right,#e646c6 0%, #ffffff 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;`,
+					has: $transformationParts.traits.fenghuang_eyes isnot "disabled",
+					text: "你的双眸能看透过去与未来，+10%诡术",
+				},
+				{
+					name: "凤凰祝福",
+					colour: "",
+					style: `background: linear-gradient(to right,#e646c6 0%, #ffffff 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;`,
+					has: $fenghuang gte 2,
+					text: "你获得一部分的涅槃之力，战斗中解锁凤鸣动作",
+				},

@@ -1,0 +1,113 @@
+
+/* <<fenghuangTransform step>> If neither is provided, force full transformation */
+<<widget "fenghuangTransform">>
+	<<if _args[0] gte 0>>
+		<<switch _args[0]>>
+			<<case 0>>
+				<<if $fenghuangbuild gte 15>>
+					<<set $fenghuang to 1>>
+					<<set $specialTransform to 1>>
+					<span class="gold">你感觉你的尾椎骨传来一丝痒意，有什么柔软的东西在你腿上扫过。</span>
+					<<set $transformationParts.fenghuang.tail to "default">>
+						<<if $loveInterest.primary isnot "None">>
+						你想起了
+						<<if $loveInterest.primary is "Black Wolf" or $loveInterest.primary is "Great Hawk">>
+							$loveInterest.primary，
+						<<else>>
+							$loveInterest.primary，
+						<</if>>
+						同时产生了一股原始、近乎兽性的冲动，想要与<<print C.npc[$loveInterest.primary].pronouns.him>>在一起。
+					<<else>>
+						你忽然渴望寻得一位真心的伴侣。
+					<</if>>
+					</span>
+					<<set $transformationParts.traits.mateForLife to "default">>
+					<br><br>
+				<</if>>
+			<<case 1>>
+				<<if $fenghuangbuild gte 20>>
+					<<set $fenghuang to 2>>
+					<span class="gold">你的喉咙时不时感到痒意，你有一股想放声吟唱的冲动，也许你该去森林深处看看。</span>
+					<br><br>
+				<<elseif $fenghuangbuild lt 15>>
+					<<set $fenghuang to 0>>
+					<<set $physicalTransform to 0>>
+					<span class="gold">你的尾椎骨感觉空落落的，你看向身后，那里已经什么都没有了。</span>
+					<<set $transformationParts.fenghuang.tail to "disabled">>
+					<br><br>
+				<</if>>
+			<<case 2>>
+				<<if $fenghuangbuild gte 30>>
+					<<set $fenghuang to 3>>
+					<span class="gold">你向你的后背看去，新生的翅膀轻轻地在空气中扇动。</span>
+					<<set $transformationParts.fenghuang.wings to "default">>
+					<<beauty 200>>
+					<br><br>
+				<</if>>
+			<<case 3>>
+				<<if $fenghuangbuild gte 40>>
+					<<set $fenghuang to 4>>
+					<span class="gold">你的额头感觉到了一丝说不清道不明的痒意，你忍不住伸手去触碰，触及到的是一片柔软。</span>
+					<<set $transformationParts.fenghuang.crest to "default">>
+					<br><br>
+				<<elseif $fenghuangbuild lt 30>>
+					<<set $fenghuang to 2>>
+					<span class="gold">你摸向你的后背，伴随你一段时间的羽翼却已消失于天地间。</span>
+					<<set $transformationParts.fenghuang.wings to "disabled">>
+					<br><br>
+				<</if>>
+			<<case 4>>
+				<<if $fenghuangbuild gte 50>>
+					<<set $fenghuang to 5>>
+					<span class="gold">你的眉心正在烧灼，你看了看镜子，银白色的图腾在你的眉心静静地待着。</span>
+					<<set $transformationParts.fenghuang.tattoo to "default">>
+					<br><br>
+				<<elseif $fenghuangbuild lt 40>>
+					<<set $fenghuang to 3>>
+					<span class="gold">你感觉你的额头空落落的，头羽已经掉光了。</span>
+					<<set $transformationParts.fenghuang.crest to "disabled">>
+					<br><br>
+				<</if>>
+			<<case 5>>
+				<<if $fenghuangbuild gte 65>>
+					<<set $fenghuang to 6>>
+					<span class="gold">你的眼睛传来炙热的灼烧感，你哀嚎着躬下身想要逃过这感觉，但无济于事。等待疼痛过去的时间是难忍的，但当你看见镜子里流光溢彩的瞳孔时，你认为一切都是值得的。</span>
+					<<set $transformationParts.fenghuang.eyes to "default">>
+					<<set $transformationParts.traits.fenghuang_eyes to "default">>
+					<<earnFeat "Fenghuang">>
+					<br><br>
+				<<elseif $fenghuangbuild lt 50>>
+					<<set $fenghuang to 4>>
+					<span class="gold">银白色的图腾正缓慢消失，你在镜子里看着它消散。</span>
+					<<set $transformationParts.fenghuang.tattoo to "disabled">>
+					<br><br>
+				<</if>>
+			<<case 99>>
+				<<set $physicalTransform to 0>>
+				<<set $fenghuang to 0>>
+				<<set $fenghuangbuild to 0>>
+				<<set $transformationParts.traits.fenghuang_eyes to "default">>
+				<<set $transformationParts.traits.mateForLife to "disabled">>
+				<<set $transformationParts.fenghuang.wings to "disabled">>
+				<<set $transformationParts.fenghuang.tail to "disabled">>
+				<<set $transformationParts.fenghuang.crest to "disabled">>
+				<<set $transformationParts.fenghuang.tattoo to "disabled">>
+				<<set $transformationParts.fenghuang.eyes to "disabled">>
+
+		<</switch>>
+	<<else>>
+		<<clearDivineTransformations>>
+		<<set $specialTransform to 1>>
+		<<set $fenghuang to 6>>
+		<<set $fenghuangbuild to 100>>
+		<<set $transformationParts.traits.fenghuang_eyes to "default">>
+		<<set $transformationParts.traits.mateForLife to "default">>
+		<<set $transformationParts.fenghuang.wings to "default">>
+		<<set $transformationParts.fenghuang.crest to "default">>
+		<<set $transformationParts.fenghuang.tail to "default">>
+		<<set $transformationParts.fenghuang.tattoo to "default">>
+		<<set $transformationParts.fenghuang.eyes to "default">>
+	<</if>>
+<</widget>>
+
+/* <<angelTransform step>> If neither is provided, force full transformation */

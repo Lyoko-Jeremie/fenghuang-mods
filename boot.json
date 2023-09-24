@@ -1,4 +1,286 @@
 {
-    "name": "fenghuangTF",
-    "version": "v0.3"
+  "name": "fenghuangTF",
+  "version": "v0.3",
+  "styleFileList": [
+  ],
+  "scriptFileList_earlyload": [
+  ],
+  "scriptFileList_inject_early": [
+  ],
+  "scriptFileList_preload": [
+  ],
+  "scriptFileList": [
+    "patch-setup_feats.js",
+    "patch-canvasmodel-main.js",
+    "patch-ingame.js-combatActionColours.js"
+  ],
+  "tweeFileList": [
+    "game/overworld-forest/loc-forest/mod_change/parasol-tree.twee"
+  ],
+  "imgFileList": [
+    "img/transformations/fenghuang/crest/default.png",
+    "img/transformations/fenghuang/crestover/default.png",
+    "img/transformations/fenghuang/eyes/default.png",
+    "img/transformations/fenghuang/leftover/default.png",
+    "img/transformations/fenghuang/leftwing/default.png",
+    "img/transformations/fenghuang/pendant/default.png",
+    "img/transformations/fenghuang/rightover/default.png",
+    "img/transformations/fenghuang/rightwing/default.png",
+    "img/transformations/fenghuang/tail/default.png",
+    "img/transformations/fenghuang/tattoo/default.png"
+  ],
+  "additionFile": [
+    "readme.txt",
+    "game/base-clothing/addon-replace/canvasmodel-img-Widgets Canvas Model Main.txt",
+    "game/base-clothing/addon-replace/images-Widgets Img.txt",
+    "game/base-combat/addon-replace/effects-Widgets Effects Man.txt",
+    "game/base-debug/addon-replace/Clothes Testing-characterViewer.txt",
+    "game/base-debug/addon-replace/clothesTestingImageGenerate-characterViewerModel.txt",
+    "game/base-debug/addon-replace/clothesTestingImageGenerate-clothesTestingTransformationsControls.txt",
+    "game/base-system/addon-replace/overlays-Characteristics.txt",
+    "game/base-system/addon-replace/overlays-cheats.txt",
+    "game/base-system/addon-replace/overlays-traits.txt",
+    "game/base-system/addon-replace/Transformation Widgets-specialTransform.txt",
+    "game/base-system/addon-replace/Transformation Widgets-transformationParts.txt",
+    "game/base-system/addon-replace/Transformation Widgets-widget-fenghuangTransform.txt",
+    "game/base-system/addon-replace/Widgets Mirror-transformations-list.txt"
+  ],
+  "addonPlugin": [
+    {
+      "modName": "TweeReplacer",
+      "addonName": "TweeReplacerAddon",
+      "modVersion": "1.0.0",
+      "params": [
+        {
+          "passage": "template",
+          "findString": "",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
+        {
+          "TODO": "canvasmodel-editor.js",
+          "passage": "canvasmodel-editor.js",
+          "findString": "",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
+        {
+          "TODO": "ingame.js",
+          "passage": "ingame.js",
+          "findString": "",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
+        {
+          "TODO": "ingame.js",
+          "passage": "ingame.js",
+          "findString": "",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
+        {
+          "passage": "gameStartOnly",
+          "findString": "<<set $stray_happiness to 50>>",
+          "replace": "<<set $fenghuangbuild to 0>>\n\t<<set $fenghuang to 0>>\n\t<<set $stray_happiness to 50>>"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<<if $fox gte 3 or $harpy gte 3",
+          "replace": "<<if $fenghuang gte 6>>\n\t\t\t\t\t\t<<set $transformationParts.traits.fenghuang_eyes to \"default\">>\n\t\t\t\t\t<</if>>\n\t\t\t\t\t<<if $fox gte 3 or $harpy gte 3 or $fenghuang gte 1"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\",",
+          "replace": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\", fenghuang_eyes:\"disabled\""
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<!-- v0.3.8.6: Fixing mismatched specialtransform after losing your virginity -->\n\t<<if $demon gte 1 or $angel gte 1 or $fallenangel gte 2",
+          "replace": "<!-- v0.3.8.6: Fixing mismatched specialtransform after losing your virginity -->\n\t<<if $demon gte 1 or $angel gte 1 or $fallenangel gte 2 or $fenghuang gte 1"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<<if $transformationParts.traits.sharpEyes is \"hidden\">>\n\t\t\t<<set $transformationParts.traits.sharpEyes to \"default\">>\n\t\t<</if>>",
+          "replace": "<<if $transformationParts.traits.sharpEyes is \"hidden\">>\n\t\t\t<<set $transformationParts.traits.sharpEyes to \"default\">>\n\t\t<</if>>\n\t\t<<if $transformationParts.traits.fenghuang_eyes is \"hidden\">>\n\t\t\t<<set $transformationParts.traits.fenghuang_eyes to \"default\">>\n\t\t<</if>>"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<!-- fix for desynch between TFs and $specialTransform -->\n\t\t<<if $demon gte 1 or $angel gte 1 or $fallenangel gte 2",
+          "replace": "<!-- fix for desynch between TFs and $specialTransform -->\n\t\t<<if $demon gte 1 or $angel gte 1 or $fallenangel gte 2 or $fenghuang gte 1"
+        },
+        {
+          "passage": "Widgets variablesVersionUpdate",
+          "findString": "<<if $upperwet is undefined>>",
+          "replace": "\t<<if $fenghuang is undefined>>\n\t\t<<set $fenghuang to 0>>\n\t<</if>>\n\t<<if $fenghuangbuild is undefined>>\n\t\t<<set $fenghuangbuild to 0>>\n\t<</if>>\n\n\t<<if $upperwet is undefined>>"
+        },
+        {
+          "passage": "Widgets Canvas Model Main",
+          "findString": "<!-- Calculate blend pattern for demon TF here. -->",
+          "replaceFile": "game/base-clothing/addon-replace/canvasmodel-img-Widgets Canvas Model Main.txt"
+        },
+        {
+          "passage": "Widgets Img",
+          "findString": "\t\t<<if !_disabled.includes($transformationParts.angel.halo)>>\n\t\t\t<img class=\"layer-over_head-back anim-idle-2f\" @src=\"'img/transformations/angel/backhalo/'+$transformationParts.angel.halo+'.png'\">\n\t\t\t<img class=\"layer-halo-front anim-idle-2f\" @src=\"'img/transformations/angel/fronthalo/'+$transformationParts.angel.halo+'.png'\">\n\t\t<</if>>",
+          "replaceFile": "game/base-clothing/addon-replace/images-Widgets Img.txt"
+        },
+        {
+          "passage": "Widgets Img",
+          "findString": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/leftwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>",
+          "replace": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/leftwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>\n\t\t\t\t<<if !_disabled.includes($transformationParts.fenghuang.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/fenghuang/leftover/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/fenghuang/leftwing/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t<</if>>"
+        },
+        {
+          "passage": "Widgets Img",
+          "findString": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>",
+          "replace": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>\n\t\t\t\t<<if !_disabled.includes($transformationParts.fenghuang.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/bird/rightover/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t<</if>>"
+        },
+        {
+          "TODO": "Widgets Tentacle Actions Generation",
+          "passage": "tentacleActionsGeneration.twee",
+          "findString": "<<set _mouthaction[\"Bite\"] to \"mouthbite\"+_tentacleMouthOption>>",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
+        {
+          "passage": "Widgets Actions Generation",
+          "findString": "<<oralnew>>",
+          "replace": "<<if $consensual isnot 1 and ($fightTargets is undefined or $fightTargets.includes($mouthtarget)) and $fenghuang gte 2>>\n\t\t\t\t\t<<set _mouthaction[\"凤鸣\"] to \"fengMing\">>\n\t\t\t\t<</if>>\n\t\t\t\t<<oralnew>>"
+        },
+        {
+          "passage": "Widgets Effects Man",
+          "findString": "/*Stalked actions */",
+          "replaceFile": "game/base-combat/addon-replace/effects-Widgets Effects Man.txt"
+        },
+        {
+          "passage": "Widgets End Speech",
+          "findString": "<<unset $speechkissvirgin>>",
+          "replace": "<<unset $speechkissvirgin>>\n\t<<unset $speechfengming>>"
+        },
+        {
+          "passage": "Widgets Combat Man-Combat",
+          "findString": "<<elseif $speechcum is 1 and $rng gte 61 and $speechorgasmrepeat lte 1 and $speechorgasmcount lte 6>>",
+          "replace": "<<elseif $speechfengming is 1>>\n\t\t\t\t<<He>><<print either(\"尖叫着\",\"抽泣着\",\"大喊着\",\"呼喊着\")>><<print either(`：\"什么声音！\"`,`陷入狂乱。`)>>\n\t\t\t<<elseif $speechcum is 1 and $rng gte 61 and $speechorgasmrepeat lte 1 and $speechorgasmcount lte 6>>"
+        },
+        {
+          "passage": "clothesTestingImageGenerate",
+          "findString": "<<set _modeloptions.fox_cheeks_type to $characterViewer.bodyState.foxCheeks>>",
+          "replaceFile": "game/base-debug/addon-replace/clothesTestingImageGenerate-characterViewerModel.txt"
+        },
+        {
+          "passage": "clothesTestingImageGenerate",
+          "findRegex": "<<widget \"clothesTestingTransformationsControls\">>\\W+<h4>[^<>]+<\\/h4>",
+          "replaceFile": "game/base-debug/addon-replace/clothesTestingImageGenerate-clothesTestingTransformationsControls.txt"
+        },
+        {
+          "passage": "Clothes Testing",
+          "findString": "<<set $characterViewer.bodyState to {",
+          "replaceFile": "game/base-debug/addon-replace/Clothes Testing-characterViewer.txt"
+        },
+        {
+          "passage": "Characteristics",
+          "findString": "<<if $wolfgirl gte 6 or $cat gte 6 or $cow gte 6 or $harpy gte 6 or $fox gte 6",
+          "replace": "<<if $wolfgirl gte 6 or $cat gte 6 or $cow gte 6 or $harpy gte 6 or $fox gte 6 or $fenghuang gte 6"
+        },
+        {
+          "passage": "Characteristics",
+          "findString": "<<set _skulduggeryConfig.modTypes.good.pushUnique(\"sharp eyes\")>>",
+          "replaceFile": "game/base-system/addon-replace/overlays-Characteristics.txt"
+        },
+        {
+          "passage": "Characteristics",
+          "findRegex": "<<if \\$angel gte 6>>([^<>]+)<<elseif \\$fallenangel gte 2>>([^<>]+)<<elseif \\$demon gte 6>>([^<>]+)<<else>>([^<>]+)<<\\/if>>",
+          "replace": "<<if \\$angel gte 6>>$1<<elseif \\$fallenangel gte 2>>$2<<elseif \\$demon gte 6>>$3<<elseif \\$fenghuang gte 6>>\\n\t\t\t一只小凤凰\\n\t\t\t<<else>>$4<<\\/if>>"
+        },
+        {
+          "passage": "Cheats",
+          "findString": "<<foxTransform 99>><<updatesidebarimg>><</link>><br>",
+          "replaceFile": "game/base-system/addon-replace/overlays-cheats.txt"
+        },
+        {
+          "passage": "Statistics",
+          "findString": "<span class=\"gold\">Transformations</span>",
+          "replace": "<span class=\"gold\">Transformations</span>\n\t\t\t凤凰化: <<print Math.trunc($fenghuangbuild)>> (65+ 完成变形)\n\t\t\t<br>\n\t\t\t涅槃阶段: <<print Math.trunc($fenghuang)>>\n\t\t\t<br>"
+        },
+        {
+          "passage": "Traits",
+          "findString": "\t\t\ttitle: \"General Traits\",\n\t\t\ttraits: [",
+          "replaceFile": "game/base-system/addon-replace/overlays-traits.txt"
+        },
+        {
+          "passage": "Widgets Attitudes",
+          "findString": "<<if $wolfgirl gte 2>>",
+          "replace": "<<if $fenghuang gte 2>>\n\t\t<<set _mouth[\"凤鸣\"] to \"fengMing\">>\n\t<</if>>\n\n\t<<if $wolfgirl gte 2>>"
+        },
+        {
+          "passage": "Widgets Mirror",
+          "findString": "<div id='transformations-list' class='list'>",
+          "replaceFile": "game/base-system/addon-replace/Widgets Mirror-transformations-list.txt"
+        },
+        {
+          "passage": "Widgets Mirror",
+          "findString": "<<set _traits to $transformationParts.traits>>",
+          "replace": "<<set _fenghuang to $transformationParts.fenghuang>>\n\t<<set _traits to $transformationParts.traits>>"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "/* <<angelTransform step>> If neither is provided, force full transformation */",
+          "replaceFile": "game/base-system/addon-replace/Transformation Widgets-widget-fenghuangTransform.txt"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "<<elseif $fallenangel gte 2>>\n\t\t\t<<fallenButNotOut $fallenangel>>",
+          "replace": "<<elseif $fallenangel gte 2>>\n\t\t\t<<fallenButNotOut $fallenangel>>\n\t\t<<elseif ($fenghuangbuild gte 15 and $specialTransform isnot 1) or ($fenghuang gte 1 and $specialTransform is 1)>>\n\t\t\t<<fenghuangTransform $fenghuang>>"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "\t<<if _args[1]>>\n\t\t<<switch _args[0]>>",
+          "replace": "\t<<if _args[1]>>\n\t\t<<switch _args[0]>>\n\t\t\t<<case \"fenghuang\">> <<set $fenghuangbuild = Math.clamp($fenghuangbuild + _args[1], 0, 100)>>"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "<<if $transformationParts.traits is undefined>>",
+          "replaceFile": "game/base-system/addon-replace/Transformation Widgets-transformationParts.txt"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\"",
+          "replace": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\", fenghuang_eyes:\"disabled\""
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "\t\t<</if>>\n\t\t<<if $physicalTransform is 1>>",
+          "replaceFile": "game/base-system/addon-replace/Transformation Widgets-specialTransform.txt"
+        },
+        {
+          "passage": "Transformation Widgets",
+          "findString": "<<set $transformationParts to {\n\t\t\ttraits: {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\"},",
+          "replace": "<<set $transformationParts to {\n\t\t\ttraits: {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\", fenghuang_eyes:\"disabled\"},\n\t\t\tfenghuang: {crest:\"disabled\", tail:\"disabled\", wings:\"disabled\", tattoo:\"disabled\", eyes:\"disabled\"},"
+        },
+        {
+          "passage": "Forest",
+          "findString": "<<if $edenfreedom gte 1>>",
+          "replace": "<<link [[靠近古树(0:10)|Parasol Tree]]>><<pass 10>><</link>>\n\t\t\t<br>\n\t\t\t<<if $edenfreedom gte 1>>"
+        },
+        {
+          "passage": "Scarlet Widgets",
+          "findString": "<<hideTransformations>>",
+          "replace": "<<set $fenghuang to 0>>\n\t<<hideTransformations>>"
+        }
+      ]
+    }
+  ],
+  "dependenceInfo": [
+    {
+      "modName": "ModLoader DoL ImageLoaderHook",
+      "version": "1.0.0"
+    },
+    {
+      "modName": "TweeReplacer",
+      "version": "1.0.0"
+    }
+  ]
 }

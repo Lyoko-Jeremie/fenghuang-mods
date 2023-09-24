@@ -1,0 +1,4 @@
+	<<if $transformationParts.fenghuang is undefined>>
+		<<set $transformationParts.fenghuang to {crest:"disabled", tail:"disabled", wings:"disabled", tattoo:"disabled", eyes:"disabled"}>>
+	<</if>>
+	<<if $transformationParts.traits is undefined>>

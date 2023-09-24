@@ -1,0 +1,326 @@
+:: Forest
+
+<<location "forest">><<effects>><<wPersist "forest">><<getTarget true>>
+<<if $foresthunt gte 1>>
+	<<if $edenforesthunt is 1>>
+		<<print either(
+			`<span class="red">You are being hunted. You see spent bullet casings lying on the ground.</span>`,
+			`<span class="red">You are being hunted. You see boot prints on the ground.</span>`,
+			`<span class="red">You are being hunted. You hear a gun firing from afar.</span>`
+		)>>
+	<<elseif $blackwolfhunt is 1>>
+		<<print either(
+			`<span class="red">You are being hunted. You see wolf fur tangled in the trees.</span>`,
+			`<span class="red">You are being hunted. You see wolf prints on the ground.</span>`,
+			`<span class="red">You are being hunted. You hear a growl in the distance.</span>`
+		)>>
+	<<elseif $wraith.hunt>>
+		<<if $moonstate is "morning" and Time.hour gte 6>>
+			With the rising of the sun, you feel a sense of relief. The dread passes. <span class="blue"><i>You're safe until the next blood moon.</i></span>
+			<<clearWraith>>
+		<<else>>
+			<<print either(
+				`<span class="red">You are being hunted. Red moonlight casts dire shadows all around you.</span><<stress 6>><<gstress>>`,
+				`<span class="red">You are being hunted. You hear distant laughter.</span> <<trauma 6>><<gtrauma>>`,
+				`<span class="red">You are being hunted. It's becoming harder to breathe.</span> <<stress 6>><<gstress>><<trauma 6>><<gtrauma>>`
+			)>>
+		<</if>>
+	<<else>>
+		<!-- generic text for when a hunt is happening but we haven't written a more specific version of the text. -->
+		<span class="red">You are being hunted.</span>
+	<</if>>
+	<br><br>
+<</if>>
+
+<<if $arousal gte $arousalmax>>
+	<<orgasmforest>>
+<</if>>
+
+<<if $forest lte 0>>
+	<<set $forest to 0>>
+	<<forestmove>>
+	<<if $stress gte $stressmax and !$possessed>>
+		<<passoutforest>>
+	<<elseif $foresthunt gte 10>>
+		<<foresthunt>>
+	<<else>>
+		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+		<<if $eventskip is 0>>
+			<<rng>>
+			<<if $rng gte 81 or ($forest_search is true and $rng gte 61)>>
+				<<eventforestitem>>
+			<<elseif $danger gte (9900 - ($allure * $forestmod))>>
+				<<eventforestoutskirts>>
+			<<else>>
+				<<eventforestsafe>>
+			<</if>>
+		<<elseif $town_projects.road is 1>>
+			<<set $town_projects.road to 2>>
+			You are in the forest outskirts. You can make out the town between the trees.
+			<br><br>
+
+			You almost trip over a worn brick. It draws your attention to others like it. There used to be a road here, connecting the town to the lake. <span class="teal">An idea strikes you.</span> If the road were restored, the journey would be safer, for both you and other students.
+			<br><br>
+
+			<i>You could enquire about the road at the town hall.</i>
+			<br><br>
+
+			<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+			<br>
+		<<elseif $town_projects.road is 3>>
+			<<set $town_projects.road to 4>>
+			You are in the forest outskirts. You can make out the town between the trees.
+			<br><br>
+
+			The mayor's office acted fast. A road stretches into the forest, swerving out of sight. <span class="green">Getting to and from the lake will be much easier.</span>
+			<br><br>
+
+			<<earnFeat "Safe Trail">>
+			<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+			<br>
+		<<elseif $eventskip gte 1>>
+			You are in the forest outskirts. You can make out the town between the trees.
+			<br><br>
+
+			<<if $exposed lte 1>>
+				<<if $forest_shop_intro is 1>>
+					<<forestshopicon>><<link [[Forest shop|Forest Shop]]>><</link>>
+					<br><br>
+				<<else>>
+					<<forestshopicon>><<link [[Strange shop|Forest Shop]]>><</link>>
+					<br><br>
+				<</if>>
+			<</if>>
+
+			<<forestdeeper>>
+			<br><br>
+
+			<<forestsearch>>
+			<br><br>
+
+			Leave the forest
+			<br>
+			<<danubeicon>><<link [[Danube Street (0:10)|Danube Street]]>><<pass 10>><<set $foresthunt to 0>><</link>>
+			<br>
+			<<wolficon>><<link [[Wolf Street (0:10)|Wolf Street]]>><<pass 10>><<set $foresthunt to 0>><</link>>
+			<br>
+			<<nightingaleicon>><<link [[Nightingale Street (0:10)|Nightingale Street]]>><<pass 10>><<set $foresthunt to 0>><</link>>
+			<br>
+			<<if $temple_rank isnot undefined and $temple_rank isnot "prospective">>
+				<<wolficon>><<link [[Temple (0:10)|Temple Garden]]>><<pass 10>><<set $foresthunt to 0>><</link>>
+				<br>
+			<</if>>
+			<br><br>
+
+			<<if $historytrait gte 2 and $thicket_tunnel_intro is 1>>
+				<<link [[Take the secret tunnel to the residential alleyways (0:05)|Residential Thicket]]>><<pass 5>><</link>>
+				<br>
+			<</if>>
+			<<if $historytrait gte 3>>
+				<<link [[Take secret path deeper into the woods (0:10)|Forest]]>>
+					<<set $forestmod to 1.5>><<set $forest += 50>><<set $forestmove to "secretin">><<pass 10>>
+					<<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>>
+				<</link>>
+				<br>
+			<</if>>
+		<</if>>
+	<</if>>
+
+<<elseif $forest lte 20>>
+	<<forestmove>>
+	<<if $stress gte $stressmax and !$possessed>>
+		<<passoutforest>>
+	<<elseif $foresthunt gte 10>>
+		<<foresthunt>>
+	<<else>>
+		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+		<<if $eventskip is 0>>
+			<<rng>>
+			<<if $rng gte 81 or ($forest_search is true and $rng gte 61)>>
+				<<eventforestitem>>
+			<<elseif $danger gte (9900 - ($allure * $forestmod))>>
+				<<eventforestoutskirts>>
+			<<else>>
+				<<eventforestsafe>>
+			<</if>>
+		<<elseif $eventskip gte 1>>
+			You are in the forest. The trees are quite sparse, you can't be too far from town.
+			<br><br>
+
+			<<if $forest gte 10 and $forest lte 14>>
+				<<ind>><<link [[Old Churchyard|Churchyard]]>><</link>>
+				<br><br>
+			<</if>>
+
+			<<if $smuggler_location is "forest" and $smuggler_timer is 0 and Time.dayState is "night" and Time.hour gte 18>>
+				<span class="gold">You see a flickering through the trees. Like a flame.</span>
+				<br><br>
+			<</if>>
+
+			<<if $smuggler_location is "forest" and $smuggler_timer is 0 and Time.dayState is "night" and Time.hour gte 18>>
+				<<link [[Approach flame|Smuggler Forest]]>><</link>>
+				<br><br>
+			<</if>>
+
+			<<forestdeeper>>
+			<br><br>
+
+			<<forestsearch>>
+			<br><br>
+
+			<<forestlessdeep>>
+		<</if>>
+	<</if>>
+
+<<elseif $forest lte 50>>
+	<<forestmove>>
+	<<if $stress gte $stressmax and !$possessed>>
+		<<passoutforest>>
+	<<elseif $foresthunt gte 10>>
+		<<foresthunt>>
+	<<else>>
+		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+		<<if $eventskip is 0>>
+			<<rng>>
+			<<if $rng gte 81 or ($forest_search is true and $rng gte 61)>>
+				<<eventforestitem>>
+			<<elseif $danger gte (9900 - ($allure * $forestmod))>>
+				<<eventforest>>
+			<<else>>
+				<<eventforestsafe>>
+			<</if>>
+		<<elseif $eventskip gte 1>>
+			You are in the forest, surrounded by nature.
+			<br><br>
+
+			<<if $forest lte 30>>
+				<<if $nextPassageCheck is "Lake Shore">>
+					<span class="nextLink"><<lakeicon>><<link [[The lake.|Lake Shore]]>><<pass 10>><</link>></span>
+				<<else>>
+					<<lakeicon>><<link [[Lake (0:10)|Lake Shore]]>><<pass 10>><</link>>
+				<</if>>
+			<<elseif $forest lte 40>>
+				<<lakeicon>><<link [[Lake (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+			<<else>>
+				<<if $nextPassageCheck is "Lake Fishing Rock">>
+					<span class="nextLink"><<lakeicon>><<link [[The lake.|Lake Fishing Rock]]>><<pass 10>><</link>></span>
+				<<else>>
+					<<lakeicon>><<link [[Lake (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+				<</if>>
+			<</if>>
+			<br><br>
+
+			<<forestdeeper>>
+			<br><br>
+
+			<<forestsearch>>
+			<br><br>
+
+			<<forestlessdeep>>
+			<br><br>
+
+			<<if $historytrait gte 3>>
+				<<link [[Take secret path out of the woods (0:10)|Forest]]>>
+					<<set $forestmod to 1.5>><<set $forest -= 50>><<set $forestmove to "secretout">><<pass 10>>
+					<<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>>
+				<</link>>
+				<br>
+			<</if>>
+		<</if>>
+	<</if>>
+
+<<elseif $forest lte 99>>
+	<<forestmove>>
+	<<if $stress gte $stressmax and !$possessed>>
+		<<passoutforest>>
+	<<elseif $foresthunt gte 10>>
+		<<foresthunt>>
+	<<else>>
+		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+		<<if $eventskip is 0>>
+			<<rng>>
+			<<if $rng gte 81 or ($forest_search is true and $rng gte 61)>>
+				<<eventforestitem>>
+			<<elseif $danger gte (9900 - ($allure * $forestmod))>>
+				<<eventforestdeep>>
+			<<else>>
+				<<eventforestsafe>>
+			<</if>>
+		<<elseif $eventskip gte 1>>
+			You are deep in the forest. The trees are tall and dark, their branches twisting together to form the canopy.
+			<br><br>
+
+			<<link [[靠近古树(0:10)|Parasol Tree]]>><<pass 10>><</link>>
+			<br>
+			<<if $edenfreedom gte 1>>
+				<<link [[Eden's cabin (0:10)|Eden Clearing]]>><<pass 10>><</link>>
+				<br>
+			<<elseif $syndromeeden gte 1>>
+				<<link [[Eden's cabin (0:10)|Eden Clearing]]>><<pass 10>><</link>>
+				<br>
+			<</if>>
+			<<if $syndromewolves gte 1 and $caveHumanPregnancyDiscovered isnot 1>>
+				<<link [[Wolf cave (0:10)|Wolf Cave Clearing]]>><<pass 10>><</link>>
+				<br>
+			<<elseif $syndromewolves gte 1 and $caveHumanPregnancyDiscovered is 1>>
+				<span class="blue">You don't think the wolves would allow you to come back until your pregnancy is over.</span>
+				<br>
+			<</if>>
+			<<if $pubtask is "forest" and $pubtask2 isnot 1>>
+				<<rng>>
+				<!-- Modified for Monster People -->
+				<<if $pubtasksetting is "bear" and $bestialitydisable is "f">>
+					<<link [[Search for Landry's black box|Forest Bear Box]]>><</link>>
+				<<elseif $pubtasksetting is "pair">>
+					<<link [[Search for Landry's black box|Forest Box]]>><</link>>
+				<<elseif $rng gte 51 and $bestialitydisable is "f">>
+					<<link [[Search for Landry's black box|Forest Bear Box]]>><</link>>
+				<<else>>
+					<<link [[Search for Landry's black box|Forest Box]]>><</link>>
+				<</if>>
+			<</if>>
+			<br><br>
+
+			<<forestdeeper>>
+			<br><br>
+
+			<<forestsearch>>
+			<br><br>
+
+			<<forestlessdeep>>
+		<</if>>
+	<</if>>
+
+<<elseif $forest gte 100>>
+	<<set $forest to 100>>
+	<<forestmove>>
+
+	<<if $stress gte $stressmax and !$possessed>>
+		<<passoutforest>>
+	<<elseif $foresthunt gte 10>>
+		<<foresthunt>>
+	<<else>>
+		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+		<<if $eventskip is 0>>
+			<<rng>>
+			<<if $rng gte 81 or ($forest_search is true and $rng gte 61)>>
+				<<eventforestitem>>
+			<<elseif $danger gte (9900 - ($allure * $forestmod))>>
+				<<eventforestdeep>>
+			<<else>>
+				<<eventforestsafe>>
+			<</if>>
+		<<elseif $eventskip gte 1>>
+			You are deep in the forest. You can make out the asylum through the trees.
+			<br><br>
+
+			<<forestsearch>>
+			<br><br>
+
+			<<forestlessdeep>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<unset $forest_search>>
+<<set $eventskip to 0>>

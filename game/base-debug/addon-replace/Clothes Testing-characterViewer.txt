@@ -1,0 +1,6 @@
+<<set $characterViewer.bodyState to {
+			fenghuangCrest:"hidden",
+			fenghuangTattoo:"hidden",
+			fenghuangWings:"hidden",
+			fenghuangTail:"hidden",
+			fenghuangEyes:"hidden",

@@ -1,0 +1,11 @@
+<<foxTransform 99>><<updatesidebarimg>><</link>><br>
+	凤凰转化: <<link "应用">><<fenghuangTransform>><<updatesidebarimg>><</link>> / <<link "清除">><<fenghuangTransform 99>><<updatesidebarimg>><</link>><br>
+	<br>
+
+	凤凰化 (完全转化需要数值达到65):
+	<<link "<<">><<set $fenghuangbuild -= 50>><<transformationAlteration>><<clamp>><<replace "#statsfenghuangbuild">><<print Math.trunc($fenghuangbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+	<<link "<">><<set $fenghuangbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statsfenghuangbuild">><<print Math.trunc($fenghuangbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+	<span id="statsfenghuangbuild"><<print Math.trunc($fenghuangbuild)>></span>
+	| <<link ">">><<set $fenghuangbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statsfenghuangbuild">><<print Math.trunc($fenghuangbuild)>><</replace>> <<updatesidebarimg>><</link>>
+	| <<link ">>">><<set $fenghuangbuild += 50>><<transformationAlteration>><<clamp>><<replace "#statsfenghuangbuild">><<print Math.trunc($fenghuangbuild)>><</replace>> <<updatesidebarimg>><</link>>
+	<br>

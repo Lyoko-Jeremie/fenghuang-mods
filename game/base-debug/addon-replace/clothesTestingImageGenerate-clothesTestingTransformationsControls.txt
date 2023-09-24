@@ -1,0 +1,34 @@
+<<widget "clothesTestingTransformationsControls">>
+	<h4>转化：</h4>
+	<span class="gold">凤凰化：</span>
+	<br>
+	头羽：
+	<<listbox "$characterViewer.bodyState.fenghuangCrest"autoselect>>
+		<<option "隐藏" "hidden">>
+		<<option "默认" "default">>
+	<</listbox>>
+	||
+	额纹：
+	<<listbox "$characterViewer.bodyState.fenghuangTattoo"autoselect>>
+		<<option "隐藏" "hidden">>
+		<<option "默认" "default">>
+	<</listbox>>
+	||
+	翅膀：
+	<<listbox "$characterViewer.bodyState.fenghuangWings"autoselect>>
+		<<option "隐藏" "hidden">>
+		<<option "默认" "default">>
+	<</listbox>>
+	||
+	尾羽：
+	<<listbox "$characterViewer.bodyState.fenghuangTail"autoselect>>
+		<<option "隐藏" "hidden">>
+		<<option "默认" "default">>
+	<</listbox>>
+	||
+	瞳孔：
+	<<listbox "$characterViewer.bodyState.fenghuangEyes"autoselect>>
+		<<option "隐藏" "hidden">>
+		<<option "默认" "default">>
+	<</listbox>>
+	<br><br>

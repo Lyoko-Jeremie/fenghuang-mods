@@ -1,0 +1,21 @@
+		<<if !_disabled.includes($transformationParts.angel.halo)>>
+			<img class="layer-over_head-back anim-idle-2f" @src="'img/transformations/angel/backhalo/'+$transformationParts.angel.halo+'.png'">
+			<img class="layer-halo-front anim-idle-2f" @src="'img/transformations/angel/fronthalo/'+$transformationParts.angel.halo+'.png'">
+		<</if>>
+
+		<<if !_disabled.includes($transformationParts.fenghuang.crest)>>
+			<img class="layer-horns anim-idle-2f" @src="'img/transformations/fenghuang/crest/'+$transformationParts.fenghuang.crest+'.png'">
+			<img class="layer-horns anim-idle-2f" @src="'img/transformations/fenghuang/crestover/'+$transformationParts.fenghuang.crest+'.png'">
+		<</if>>
+
+		<<if !_disabled.includes($transformationParts.fenghuang.tattoo)>>
+			<img class="layer-sexlashes anim-idle-2f" @src="'img/transformations/fenghuang/tattoo/'+$transformationParts.fenghuang.tattoo+'.png'">
+		<</if>>
+
+		<<if !_disabled.includes($transformationParts.fenghuang.tail)>>
+			<img class="layer-sexwings anim-idle-2f" @src="'img/transformations/fenghuang/tail/'+$transformationParts.fenghuang.tail+'.png'">
+		<</if>>
+
+		<<if !_disabled.includes($transformationParts.fenghuang.eyes)>>
+			<img class="layer-over_head-back anim-idle-2f" @src="'img/transformations/fenghuang/eyes/'+$transformationParts.fenghuang.eyes+'.png'">
+		<</if>>

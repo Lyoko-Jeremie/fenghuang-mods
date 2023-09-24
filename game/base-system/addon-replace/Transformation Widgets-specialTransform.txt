@@ -1,0 +1,17 @@
+			<<if $fenghuang gte 1>>
+				<<set $transformationParts.fenghuang.tail to "default">>
+			<</if>>
+			<<if $fenghuang gte 3>>
+				<<set $transformationParts.fenghuang.wings to "default">>
+			<</if>>
+			<<if $fenghuang gte 4>>
+				<<set $transformationParts.fenghuang.crest to "default">>
+			<</if>>
+			<<if $fenghuang gte 5>>
+				<<set $transformationParts.fenghuang.tattoo to "default">>
+			<</if>>
+			<<if $fenghuang gte 6>>
+				<<set $transformationParts.fenghuang.eyes to "default">>
+			<</if>>
+		<</if>>
+		<<if $physicalTransform is 1>>

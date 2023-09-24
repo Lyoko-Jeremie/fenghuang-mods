@@ -1,0 +1,31 @@
+
+		<<if $mouthaction is "fengMing">>
+			<<set $mouthactiondefault to "fengMing">><<set $mouthaction to 0>>
+			<<if $enemyno gte 2>>
+				<<set $enemyhealth -= (60 * ($enemyno/10 + 1) * $enemyno)>>/* 人越多伤害越高 */
+			<<else>>
+				<<set $enemyhealth -= 60>>
+			<</if>>
+			<<for _npctodamage to 0; _npctodamage lt $enemynomax; _npctodamage++>>
+				<<if $NPCList[_npctodamage].active is "active" and $NPCList[_npctodamage].stance isnot "defeated">>
+					<<set $NPCList[_npctodamage].health -= (100 * ($enemyno/5 + 1) * $enemyno)>>/* 人越多伤害越高, 这行好像不生效 */
+					<<if $enemyno gte 2>>
+						<<npcdamage _npctodamage>>
+					<</if>>
+				<</if>>
+			<</for>>
+			<<set $speechfengming to 1>>
+			<<if $enemytype is "beast">>
+				<span class='gold'>你向着<<beasttype>>发出啼叫。它感到一阵威压，不自觉地呜咽了起来。</span>
+			<<elseif $enemyno gte 2>>
+				<span class='gold'>你向着<<group>>发出啼叫。他们感到一阵眩晕，不自觉地放松对你的控制，造成混乱。</span>
+				<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$npc.includes("Ivory Wraith") and !$abomination>>
+				<</if>>
+			<<else>>
+				<span class='gold'>你向着袭击者发出啼叫。<<He>>感到一阵眩晕，不自觉地放松对你的控制。</span>
+				<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$npc.includes("Ivory Wraith") and !$abomination>>
+				<</if>>
+			<</if>>
+		<</if>>
+
+		/*Stalked actions */

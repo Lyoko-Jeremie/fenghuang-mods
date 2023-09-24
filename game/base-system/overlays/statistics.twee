@@ -729,6 +729,10 @@
 
 		<<foldout false "_transformationFoldout">>
 			<span class="gold">Transformations</span>
+			凤凰化: <<print Math.trunc($fenghuangbuild)>> (65+ 完成变形)
+			<br>
+			涅槃阶段: <<print Math.trunc($fenghuang)>>
+			<br>
 			Wolfiness: <<print Math.trunc($wolfbuild)>> (30+ for full transformation)
 			<br>
 			Wolf manifestation: <<print Math.trunc($wolfgirl)>>
@@ -761,10 +765,6 @@
 			<<print ($fallenangel is undefined ? 0 : Math.trunc($fallenangel))>>
 			<br>
 			Fallen Forgiveness: <<print Math.trunc($fallenbuild)>> (30+ to be forgiven)
-			<br>			
-			凤凰化: <<print Math.trunc($fenghuangbuild)>> (65+ 完成变形)
-			<br>
-			涅槃阶段: <<print Math.trunc($fenghuang)>>
 			<br><br>
 		<</foldout>>
 

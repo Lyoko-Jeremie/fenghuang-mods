@@ -1,0 +1,58 @@
+		<div id='transformations-list' class='list'>
+		<div class='tf-fenghuang'>
+				<<if $fenghuang gte 1>>
+					__凤凰__
+					<br>
+					<<if _fenghuang.crest isnot "disabled">>
+						<div class='tf-part-item'>
+							头羽:
+							<<listbox "_fenghuang.crest" autoselect>>
+								<<option "隐藏" "hidden">>
+								<<option "默认" "default">>
+							<</listbox>>
+						</div>
+						<br>
+					<</if>>
+					<<if _fenghuang.tattoo isnot "disabled">>
+						<div class='tf-part-item'>
+							额纹:
+							<<listbox "_fenghuang.tattoo" autoselect>>
+								<<option "隐藏" "hidden">>
+								<<option "默认" "default">>
+							<</listbox>>
+						</div>
+						<br>
+					<</if>>
+					<<if _fenghuang.wings isnot "disabled">>
+						<div class='tf-part-item'>
+							翅膀:
+							<<listbox "_fenghuang.wings" autoselect>>
+								<<option "隐藏" "hidden">>
+								<<option "默认" "default">>
+							<</listbox>>
+						</div>
+						<br>
+					<</if>>
+					<<if _fenghuang.tail isnot "disabled">>
+						<div class='tf-part-item'>
+							尾羽:
+							<<listbox "_fenghuang.tail" autoselect>>
+								<<option "隐藏" "hidden">>
+								<<option "默认" "default">>
+							<</listbox>>
+						</div>
+						<br>
+					<</if>>
+					<<if _fenghuang.eyes isnot "disabled">>
+						<div class='tf-part-item'>
+							瞳孔:
+							<<listbox "_fenghuang.eyes" autoselect>>
+								<<option "隐藏" "hidden">>
+								<<option "默认" "default">>
+							<</listbox>>
+						</div>
+						<br>
+					<</if>>
+					<br>
+				<</if>>
+			</div>
