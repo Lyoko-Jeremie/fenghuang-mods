@@ -59,30 +59,6 @@
           "replaceFile": ""
         },
         {
-          "TODO": "canvasmodel-editor.js",
-          "passage": "canvasmodel-editor.js",
-          "findString": "",
-          "findRegex": "",
-          "replace": "",
-          "replaceFile": ""
-        },
-        {
-          "TODO": "ingame.js",
-          "passage": "ingame.js",
-          "findString": "",
-          "findRegex": "",
-          "replace": "",
-          "replaceFile": ""
-        },
-        {
-          "TODO": "ingame.js",
-          "passage": "ingame.js",
-          "findString": "",
-          "findRegex": "",
-          "replace": "",
-          "replaceFile": ""
-        },
-        {
           "passage": "gameStartOnly",
           "findString": "<<set $stray_happiness to 50>>",
           "replace": "<<set $fenghuangbuild to 0>>\n\t<<set $fenghuang to 0>>\n\t<<set $stray_happiness to 50>>"
@@ -136,14 +112,6 @@
           "passage": "Widgets Img",
           "findString": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>",
           "replace": "<<if !_disabled.includes($transformationParts.bird.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair colour-hair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.bird.wings+'.png'\">\n\t\t\t\t<</if>>\n\t\t\t\t<<if !_disabled.includes($transformationParts.fenghuang.wings)>>\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/bird/rightover/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t\t<img class=\"layer-backhair anim-idle-2f\" @src=\"'img/transformations/bird/rightwing/'+$transformationParts.fenghuang.wings+'.png'\">\n\t\t\t\t<</if>>"
-        },
-        {
-          "TODO": "Widgets Tentacle Actions Generation",
-          "passage": "tentacleActionsGeneration.twee",
-          "findString": "<<set _mouthaction[\"Bite\"] to \"mouthbite\"+_tentacleMouthOption>>",
-          "findRegex": "",
-          "replace": "",
-          "replaceFile": ""
         },
         {
           "passage": "Widgets Actions Generation",
@@ -271,6 +239,41 @@
           "replace": "<<set $fenghuang to 0>>\n\t<<hideTransformations>>"
         }
       ]
+    },
+    {
+      "modName": "ReplacePatcher",
+      "addonName": "ReplacePatcherAddon",
+      "modVersion": "1.0.0",
+      "params": {
+        "js": [
+          {
+            "TODO": "canvasmodel-editor.js",
+            "fileName": "canvasmodel-editor.js",
+            "from": "selectOption(\"fox_cheeks_type\", [\"disabled\", \"hidden\", \"default\"]),",
+            "to": "selectOption(\"fox_cheeks_type\", [\"disabled\", \"hidden\", \"default\"]),\n\t\t\t\t\t\tselectOption(\"fenghuang_wings_type\", [\"disabled\", \"hidden\", \"default\"]),\n\t\t\t\t\t\tselectOption(\"fenghuang_tail_type\", [\"disabled\", \"hidden\", \"default\"]),\n\t\t\t\t\t\tselectOption(\"fenghuang_crest_type\", [\"disabled\", \"hidden\", \"default\"]),\n\t\t\t\t\t\tselectOption(\"fenghuang_tattoo_type\", [\"disabled\", \"hidden\", \"default\"]),\n\t\t\t\t\t\tselectOption(\"fenghuang_eyes_type\", [\"disabled\", \"hidden\", \"default\"]),"
+          },
+          {
+            "TODO": "ingame.js",
+            "fileName": "ingame.js",
+            "from": "this.addMany(type, \"Defiant\", \"mouthaction\", [\"pullaway\", \"bite\", \"breastbite\", \"headbutt\"",
+            "to": "this.addMany(type, \"Defiant\", \"mouthaction\", [\"pullaway\", \"bite\", \"breastbite\", \"headbutt\", \"fengMing\""
+          },
+          {
+            "TODO": "ingame.js",
+            "fileName": "ingame.js",
+            "from": "result = Math.floor(result * modifier);",
+            "to": "if (V.fenghuang >= 6) modifier += 0.10;\n\t\t\tresult = Math.floor(result * modifier);"
+          }
+        ],
+        "twee": [
+          {
+            "TODO": "tentacleActionsGeneration.twee",
+            "passageName": "Widgets Tentacle Actions Generation",
+            "from": "\"mouthbite\"+_tentacleMouthOption>>\n\t\t\t<</if>>",
+            "to": "\"mouthbite\"+_tentacleMouthOption>>\n\t\t\t<</if>>\n\t\t\t<<if $fenghuang gte 2 or $fenghuangbuild gte 20>>\n\t\t\t\t<<set _mouthaction[\"凤鸣\"] to \"fengMing\">>\n\t\t\t<</if>>"
+          }
+        ]
+      }
     }
   ],
   "dependenceInfo": [
@@ -280,6 +283,10 @@
     },
     {
       "modName": "TweeReplacer",
+      "version": "1.0.0"
+    },
+    {
+      "modName": "ReplacePatcher",
       "version": "1.0.0"
     }
   ]
