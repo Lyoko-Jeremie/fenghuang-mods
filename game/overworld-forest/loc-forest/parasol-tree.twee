@@ -1,0 +1,43 @@
+:: Parasol Tree
+
+<<location "forest">><<effects>><<wPersist "forest">><<getTarget true>>
+    坠子正在发热，你抬头看向一旁，四周的空间奇异地扭曲了一刹那。
+	<br><br>
+
+	经过一阵头晕眼花，你进入了一个小小的中空地带。
+	<br><br>
+
+	你抬头看向中心处的梧桐树，你被它动人心魄的美所打动。
+<br><br>
+
+<<link [[抚摸古树(0:10)|Stroke Parasol Tree]]>><<pass 10>><<set $molestationstart to 1>><<stress -12>><<transform fenghuang 1>><</link>><<llstress>>
+<br>
+<<link [[离开(0:10)|Forest]]>><<pass 10>><</link>>
+
+:: Stroke Parasol Tree
+
+<<location "forest">><<effects>>
+	你感觉身上的坠子在接近这棵树时传来一阵阵暖意。
+	<br><br>
+
+	你不由自主地伸出手触碰树干，你感觉到树干上的纹路让你安心。
+	<br><br>
+
+<br><br>
+
+<<link [[在树下唱歌(0:30)|Parasol Tree Singing]]>><<pass 30>><<set $molestationstart to 1>><<stress -8>><<trauma -8>><<transform fenghuang 2>><</link>><<lstress>><<ltrauma>>
+<br>
+<<link [[离开(0:10)|Forest]]>><<pass 10>><</link>>
+
+:: Parasol Tree Singing
+ 
+<<location "forest">><<effects>>
+	你的尾羽在树下舒适地伸展开。
+	<br><br>
+
+	你听着林间传来的沙沙声，忍不住轻吟。
+	<br><br>
+
+	你听见树叶上传来的回声，你感觉到心旷神怡。。
+<br><br>
+<<link [[离开(0:10)|Forest]]>><<pass 10>><</link>>
