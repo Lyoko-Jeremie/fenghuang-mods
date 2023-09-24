@@ -30,7 +30,7 @@
     "img/transformations/fenghuang/tattoo/default.png"
   ],
   "additionFile": [
-    "readme.txt",
+    "readme.md",
     "game/base-clothing/addon-replace/canvasmodel-img-Widgets Canvas Model Main.txt",
     "game/base-clothing/addon-replace/images-Widgets Img.txt",
     "game/base-combat/addon-replace/effects-Widgets Effects Man.txt",
