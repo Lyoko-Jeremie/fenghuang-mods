@@ -52,13 +52,6 @@
       "modVersion": "1.0.0",
       "params": [
         {
-          "passage": "template",
-          "findString": "",
-          "findRegex": "",
-          "replace": "",
-          "replaceFile": ""
-        },
-        {
           "passage": "gameStartOnly",
           "findString": "<<set $stray_happiness to 50>>",
           "replace": "<<set $fenghuangbuild to 0>>\n\t<<set $fenghuang to 0>>\n\t<<set $stray_happiness to 50>>"

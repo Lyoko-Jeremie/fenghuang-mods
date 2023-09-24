@@ -65,6 +65,13 @@
       "addonName": "TweeReplacerAddon",
       "modVersion": "1.0.0",
       "params": [
+        {
+          "passage": "template",
+          "findString": "",
+          "findRegex": "",
+          "replace": "",
+          "replaceFile": ""
+        },
         // 告诉 TweeReplacerAddon 插件的参数，哪些地方需要替换，有以下四种模式
         {   // 模式1：用字符串replace替换字符串findString
           "passage": "<PassageName>",
