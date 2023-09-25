@@ -1,4 +1,6 @@
-			title: "General Traits",
+<<set _traitLists to [
+		{
+			title: "$1",
 			traits: [
 				{
 					name: "凤眸",

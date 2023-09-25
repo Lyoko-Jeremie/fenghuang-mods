@@ -8,6 +8,7 @@
   "scriptFileList_inject_early": [
   ],
   "scriptFileList_preload": [
+    "dataExport.js"
   ],
   "scriptFileList": [
     "patch-setup_feats.js",
@@ -63,7 +64,7 @@
         },
         {
           "passage": "Widgets variablesVersionUpdate",
-          "findString": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\",",
+          "findString": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\"",
           "replace": "<<set $transformationParts.traits to {fangs:\"disabled\", sharpEyes:\"disabled\", mateForLife:\"disabled\", flaunting:\"disabled\", fenghuang_eyes:\"disabled\""
         },
         {
@@ -148,13 +149,13 @@
         },
         {
           "passage": "Characteristics",
-          "findString": "<<set _skulduggeryConfig.modTypes.good.pushUnique(\"sharp eyes\")>>",
+          "findString": "<<if $fox gte 6>>",
           "replaceFile": "game/base-system/addon-replace/overlays-Characteristics.txt"
         },
         {
           "passage": "Characteristics",
           "findRegex": "<<if \\$angel gte 6>>([^<>]+)<<elseif \\$fallenangel gte 2>>([^<>]+)<<elseif \\$demon gte 6>>([^<>]+)<<else>>([^<>]+)<<\\/if>>",
-          "replace": "<<if \\$angel gte 6>>$1<<elseif \\$fallenangel gte 2>>$2<<elseif \\$demon gte 6>>$3<<elseif \\$fenghuang gte 6>>\\n\t\t\t一只小凤凰\\n\t\t\t<<else>>$4<<\\/if>>"
+          "replace": "<<if $angel gte 6>>$1<<elseif $fallenangel gte 2>>$2<<elseif $demon gte 6>>$3<<elseif $fenghuang gte 6>>\n\t\t\t一只小凤凰\n\t\t\t<<else>>$4<</if>>"
         },
         {
           "passage": "Cheats",
@@ -163,12 +164,12 @@
         },
         {
           "passage": "Statistics",
-          "findString": "<span class=\"gold\">Transformations</span>",
-          "replace": "<span class=\"gold\">Transformations</span>\n\t\t\t凤凰化: <<print Math.trunc($fenghuangbuild)>> (65+ 完成变形)\n\t\t\t<br>\n\t\t\t涅槃阶段: <<print Math.trunc($fenghuang)>>\n\t\t\t<br>"
+          "findRegex": "<span class=\"gold\">([^<>]+)</span>",
+          "replace": "<span class=\"gold\">$1</span>\n\t\t\t凤凰化: <<print Math.trunc($fenghuangbuild)>> (65+ 完成变形)\n\t\t\t<br>\n\t\t\t涅槃阶段: <<print Math.trunc($fenghuang)>>\n\t\t\t<br>"
         },
         {
           "passage": "Traits",
-          "findString": "\t\t\ttitle: \"General Traits\",\n\t\t\ttraits: [",
+          "findRegex": "<<set _traitLists to \\[\\W+\\{\\W+title: \"([^\"]+)\",\\W+traits: \\[",
           "replaceFile": "game/base-system/addon-replace/overlays-traits.txt"
         },
         {

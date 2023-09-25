@@ -1,5 +1,5 @@
-<<set _skulduggeryConfig.modTypes.good.pushUnique("sharp eyes")>>
-				<</if>>
 				<<if $transformationParts.traits.fenghuang_eyes isnot "disabled">>
 					<<set _skulduggeryConfig.modifier to Math.floor(_skulduggeryConfig.modifier * 1.10)>>
 					<<set _skulduggeryConfig.modTypes.good.pushUnique("洞悉一切的双眸")>>
+				<</if>>
+				<<if $fox gte 6>>
